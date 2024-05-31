@@ -1,0 +1,16 @@
+{
+    "slides": [
+      {
+        "src": "https://img.freepik.com/free-psd/beautiful-leaves-isolated_23-2150114877.jpg",
+        "alt": "Image 1 for carousel"
+      },
+      {
+        "src": "https://img.freepik.com/premium-photo/flower-pot-room-interior-decoration-white-table-background-with-copy-space_38716-202.jpg",
+        "alt": "Image 2 for carousel"
+      },
+      {
+        "src": "https://img.freepik.com/premium-photo/flower-pots-blue-background-with-copy-space_45281-726.jpg",
+        "alt": "Image 3 for carousel"
+      }
+    ]
+  }

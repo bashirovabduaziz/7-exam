@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a.active{
+    color: rgba(61, 61, 61, 1);
+    border-bottom: 3px solid rgba(70, 163, 88, 1);
+}
+.link.active{
+    color: green;
+}
+.search-title{
+    width: 100px;
+    height: 100px;
+    
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    
+}
