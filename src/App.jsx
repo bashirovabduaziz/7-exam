@@ -9,6 +9,7 @@ import Account from './pages/Account/Account'
 import Address from './pages/Address/Address'
 import Wishlist from './pages/Wishlist/Wishlist'
 import './App.css'
+import {data} from '../src/static/data.json'
 
 const App = () => {
   return (

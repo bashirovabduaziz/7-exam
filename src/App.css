@@ -19,3 +19,46 @@ a.active{
         white-space: nowrap;
     
 }
+
+.title{
+    width: 100px;
+    
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+}
+
+.bg-clr{
+  background-color: rgba(251, 251, 251, 1);
+ box-shadow: 3px 3px 6px #0002;
+
+}
+.items{
+    border-bottom: 2px;
+}
+
+.items:hover{
+    border-bottom: solid #46A358;
+    color: #46A358;
+}
+.product__like{
+    background: white;
+    border-radius: 5px;
+    padding: 5px 5px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+
+  .product__hiddens{
+    margin-left: 10px;
+    margin-top: -40px;
+    visibility: hidden;
+    display: flex;
+    align-items: center;
+  }
+
+  .product__cart:hover .product__hiddens{
+    opacity: 1;
+    visibility: visible;
+    transition: 5s all;
+}
