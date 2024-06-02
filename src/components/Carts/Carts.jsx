@@ -2,10 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 import { CircularProgress, Skeleton } from '@mui/material';
-import { FaRegHeart } from 'react-icons/fa';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { IoCartOutline, IoSearchOutline } from 'react-icons/io5';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleToWishes } from "../../context/wishlistSlice";
+import {addToCart} from '../../context/cartSlice'
 
 const Carts = ({ data, loading }) => {
+  const dispatch = useDispatch()
+  const wishes = useSelector(state => state.wishlist.value)
+
     const [currentPage, setCurrentPage] = useState(0);
     const itemsPerPage = 9;
     useEffect(() => {
@@ -90,15 +96,20 @@ const Carts = ({ data, loading }) => {
                                
                                     <img src={plant.images[0]} className='w-[180px] h-[200px] bg-clr  rounded-[5px]' alt={plant.title} />
                                     <div className="product__hiddens">
-                                       <button className='product__like'>
-                  <FaRegHeart className='w-[30px] h-[20px]' />
+                                       <button className='product__like' onClick={()=> dispatch(toggleToWishes(plant))}>
+                                       {
+                wishes.some(w => w.id === plant.id) ?
+                <FaHeart className='w-[30px] h-[20px] '/>:
+                <FaRegHeart className='w-[30px] h-[20px]' />
+            }
+
 
                                        </button>
-                                       <button className='product__like'>
+                                       <button className='product__like' onClick={() => dispatch(addToCart(plant))} >
                                        <IoCartOutline className='w-[30px] h-[20px]' />
                                        </button>
                                        <Link to={`/single-product/${plant.id}`}>
-                                       <button className='product__like'>
+                                       <button className='product__like' >
                                        <IoSearchOutline className='w-[30px] h-[20px]'  />
                                        </button>
                                 </Link>
