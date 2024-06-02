@@ -62,3 +62,6 @@ a.active{
     visibility: visible;
     transition: 5s all;
 }
+.icons{
+    color: #46A358;
+}

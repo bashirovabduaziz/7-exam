@@ -5,6 +5,7 @@ import Header from '../../components/Header/Header';
 import Carousel from '../../components/Carousel/Carousel';
 import { slides } from "../../static/static.json";
 import Categories from '../../components/categories/Categories';
+import Footer from '../../components/Footer/Footer';
 
 const YourComponent = () => {
   const [data , setData] = useState([])
@@ -29,6 +30,7 @@ useEffect(() => {
               <Categories />
            <Carts data={data}  loading={loading} />
            </div>
+           <Footer />
         </div>
     );
 };

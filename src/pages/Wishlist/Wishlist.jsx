@@ -22,7 +22,7 @@ const Wishlist = () => {
 
               {
                 wishes.some(w => w.id === wish.id) ?
-                <FaHeart className='w-[30px] h-[20px] '/>:
+                <FaRegHeart className='w-[30px] h-[20px] icons'/>:
                 <FaRegHeart className='w-[30px] h-[20px]' />
             }
 
@@ -49,7 +49,7 @@ const Wishlist = () => {
       <Header />
       {
         wishes.length ? 
-        <div className='mx-auto w-[1200px] flex items-center '>{wish}</div>
+        <div className='mx-auto w-[1200px] flex items-center flex-wrap '>{wish}</div>
         
 
         :

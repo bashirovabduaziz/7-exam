@@ -99,8 +99,8 @@ const Carts = ({ data, loading }) => {
                                        <button className='product__like' onClick={()=> dispatch(toggleToWishes(plant))}>
                                        {
                 wishes.some(w => w.id === plant.id) ?
-                <FaHeart className='w-[30px] h-[20px] '/>:
-                <FaRegHeart className='w-[30px] h-[20px]' />
+                <FaRegHeart className='w-[30px] h-[20px] icons'/>:
+                <FaRegHeart className='w-[30px] h-[20px] ' />
             }
 
 
