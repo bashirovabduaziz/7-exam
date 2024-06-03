@@ -65,3 +65,8 @@ a.active{
 .icons{
     color: #46A358;
 }
+.cen{
+ box-shadow: 3px 5px 10px #0002;
+ overflow: hidden;
+ border-radius: 5px;
+}
