@@ -6,6 +6,7 @@ import Carousel from '../../components/Carousel/Carousel';
 import { slides } from "../../static/static.json";
 import Categories from '../../components/categories/Categories';
 import Footer from '../../components/Footer/Footer';
+import Image from '../../assets/mainimg/02.svg'
 
 const YourComponent = () => {
   const [data , setData] = useState([])
@@ -30,6 +31,10 @@ useEffect(() => {
               <Categories />
            <Carts data={data}  loading={loading} />
            </div>
+           <div className="w-[1200px] mx-auto mt-[50px]">
+            <img src={Image} alt="" />
+           </div>
+
            <Footer />
         </div>
     );

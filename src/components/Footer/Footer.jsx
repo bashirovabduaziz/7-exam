@@ -7,6 +7,12 @@ import logo from '../../assets/headerimg/Logo.svg'
 import { FaLocationDot} from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { FaPhoneAlt } from 'react-icons/fa'
+import { GrFacebookOption } from "react-icons/gr";
+import { FiInstagram } from "react-icons/fi";
+import { RiTwitterFill } from "react-icons/ri";
+import payme from '../../assets/mainimg/payme.png'
+
+
 
 
 
@@ -57,7 +63,50 @@ const Footer = () => {
 
       </div>
     </div>
-    <div className=""></div>
+    <div className="w-[1200px] mx-auto mt-[30px]">
+        <ul className='flex items-center justify-between'>
+          <li >
+            <p className='font-[700] text-[#3D3D3D] text-[18px]'>My Account</p>
+            <p className='font-[400] text-[#3D3D3D] mt-[5px]'>My Account</p>
+            <p className='font-[400] text-[#3D3D3D] mt-[5px]'>Our stores</p>
+            <p className='font-[400] text-[#3D3D3D] mt-[5px]'>Contact us</p>
+            <p className='font-[400] text-[#3D3D3D] mt-[5px]'>Career</p>
+            <p className='font-[400] text-[#3D3D3D] mt-[5px]'>Specials</p>
+          </li>
+          <li >
+            <p className='font-[700] text-[#3D3D3D] text-[18px]'>Help & Guide</p>
+            <p className='font-[400] text-[#3D3D3D] mt-[5px]'>Help Center</p>
+            <p className='font-[400] text-[#3D3D3D] mt-[5px]'>How to Buy</p>
+            <p className='font-[400] text-[#3D3D3D] mt-[5px]'>Shopping & Delivery</p>
+            <p className='font-[400] text-[#3D3D3D] mt-[5px]'>Product Police</p>
+            <p className='font-[400] text-[#3D3D3D] mt-[5px]'>How to Return</p>
+          </li>
+          <li >
+            <p className='font-[700] text-[#3D3D3D] text-[18px]'>Categories</p>
+            <p className='font-[400] text-[#3D3D3D] mt-[5px]'>House Plants</p>
+            <p className='font-[400] text-[#3D3D3D] mt-[5px]'>Potter Plants</p>
+            <p className='font-[400] text-[#3D3D3D] mt-[5px]'>Seeds</p>
+            <p className='font-[400] text-[#3D3D3D] mt-[5px]'>Small Plants</p>
+            <p className='font-[400] text-[#3D3D3D] mt-[5px]'>Accessories</p>
+          </li>
+          <li>
+          <p className='font-[700] text-[#3D3D3D] text-[18px]'>Social Media</p>
+                <div className='flex items-center gap-[10px]  mt-[10px]'>
+                  <div className='border-[2px] p-[6px] w-[35px] rounded-[6px]'>
+                    <GrFacebookOption className='icons w-[20px] h-[20px]' />
+                    </div>
+                    <div className='border-[2px] p-[6px] w-[35px] rounded-[6px]'>
+                    <FiInstagram className='icons w-[20px] h-[20px]' />
+                    </div>
+                    <div className='border-[2px] p-[6px] w-[35px] rounded-[6px]'>
+                    <RiTwitterFill className='icons w-[20px] h-[20px]' />
+                    </div>
+                </div>
+          <p className='font-[700] text-[#3D3D3D] text-[18px] mt-[20px]'>We accept</p>
+                 <img src={payme} alt="" className='mb-[30px]'/>
+          </li>
+        </ul>
+    </div>
     </div>
   )
 }
