@@ -11,6 +11,7 @@ import {addToCart} from '../../context/cartSlice'
 const Carts = ({ data, loading }) => {
   const dispatch = useDispatch()
   const wishes = useSelector(state => state.wishlist.value)
+  const carts = useSelector(state => state.cart.value)
 
     const [currentPage, setCurrentPage] = useState(0);
     const itemsPerPage = 9;
@@ -106,7 +107,11 @@ const Carts = ({ data, loading }) => {
 
                                        </button>
                                        <button className='product__like' onClick={() => dispatch(addToCart(plant))} >
-                                       <IoCartOutline className='w-[30px] h-[20px]' />
+                                      {
+                                        carts.some(w => w.id === plant.id) ? 
+                                        <IoCartOutline className='icons w-[30px] h-[20px] '/> :
+                                        <IoCartOutline className='w-[30px] h-[20px] '/>
+                                      }
                                        </button>
                                        <Link to={`/single-product/${plant.id}`}>
                                        <button className='product__like' >
