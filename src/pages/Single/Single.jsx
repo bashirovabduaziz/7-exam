@@ -8,6 +8,8 @@ import { toggleToWishes } from "../../context/wishlistSlice";
 import { FaRegHeart } from 'react-icons/fa';
 import Footer from '../../components/Footer/Footer';
 import ProductDescription from '../../components/ProductDescription/ProductDescription';
+import { addToCart } from '../../context/cartSlice';
+import Products from '../../components/Prouducts/Products';
 
 const Single = () => {
   const {id} = useParams()
@@ -72,7 +74,7 @@ useEffect(() => {
                       <button disabled={count <= 1} onClick={() => setCount(count - 1)} className='w-10 h-12 text-[23px] rounded-full flex items-center justify-center bg-[#46A358] transition text-white'>-</button>
                       </div>
                       <Link to={'/cart'} className='mt-[10px]'><Button variant="contained"  color='success'>BUY NOW</Button></Link>
-                      <Button variant="outlined"  color='success' className='uppercase cente'>Add to cart</Button>
+                      <Button variant="outlined"  color='success' className='uppercase cente'  onClick={() => dispatch(addToCart(product))} >Add to cart</Button>
                       
                       <button onClick={()=> dispatch(toggleToWishes(product))} className='w-[40px] h-[40px] p-[4px] mt-[10px] rounded-[5px] border '>
                       {
@@ -90,7 +92,9 @@ useEffect(() => {
         
       }
       <ProductDescription />
+      <Products />
       </div>
+
       <Footer />
     </div>
   )

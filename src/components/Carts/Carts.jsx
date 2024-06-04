@@ -110,7 +110,7 @@ const Carts = ({ data, loading }) => {
                                       {
                                         carts.some(w => w.id === plant.id) ? 
                                         <IoCartOutline className='icons w-[30px] h-[20px] '/> :
-                                        <IoCartOutline className='w-[30px] h-[20px] '/>
+                                        <IoCartOutline className='w-[30px] h-[20px]'/>
                                       }
                                        </button>
                                        <Link to={`/single-product/${plant.id}`}>

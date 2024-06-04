@@ -27,10 +27,27 @@ a.active{
         text-overflow: ellipsis;
         white-space: nowrap;
 }
+.titles{
+    width: 200px;
+    
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 
 .bg-clr{
   background-color: rgba(251, 251, 251, 1);
  box-shadow: 3px 3px 6px #0002;
+
+}
+.price{
+    width: 50px;
+    
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #46A358;
+    font-weight: 600;
 
 }
 .items{
@@ -78,3 +95,24 @@ a.active{
   top: 250px;
   left: 45%;
 }
+.carousel-container {
+    padding: 20px; /* Adjust padding as necessary */
+}
+
+.carousel-item-padding-20-px {
+    padding: 0 10px; /* Half of the desired gap to both sides */
+}
+.product__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 400px;
+ /* Half of the desired gap to both sides */
+}
+.product__cars {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ /* Half of the desired gap to both sides */
+}
+
