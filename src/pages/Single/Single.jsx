@@ -19,6 +19,7 @@ const Single = () => {
   const [count , setCount] = useState(1)
   const dispatch = useDispatch()
   const wishes = useSelector(state => state.wishlist.value)
+  const carts = useSelector(state => state.cart.value)
 
   useEffect(()=> {
     axios.get(`https://dummyjson.com/products/${id}`)
@@ -74,7 +75,14 @@ useEffect(() => {
                       <button disabled={count <= 1} onClick={() => setCount(count - 1)} className='w-10 h-12 text-[23px] rounded-full flex items-center justify-center bg-[#46A358] transition text-white'>-</button>
                       </div>
                       <Link to={'/cart'} className='mt-[10px]'><Button variant="contained"  color='success'>BUY NOW</Button></Link>
-                      <Button variant="outlined"  color='success' className='uppercase cente'  onClick={() => dispatch(addToCart(product))} >Add to cart</Button>
+
+                      {
+                          carts.some(w => w.id === product?.id) ?
+                          
+                          <Button variant="outlined"  color='error' className='uppercase cente'  onClick={() => dispatch(addToCart(product))} >Delete to cart</Button> :
+                          <Button variant="outlined"  color='success' className='uppercase cente'  onClick={() => dispatch(addToCart(product))} >Add to cart</Button>
+                      }
+                    
                       
                       <button onClick={()=> dispatch(toggleToWishes(product))} className='w-[40px] h-[40px] p-[4px] mt-[10px] rounded-[5px] border '>
                       {
@@ -92,9 +100,12 @@ useEffect(() => {
         
       }
       <ProductDescription />
-      <Products />
+     
       </div>
+      <div className='mx-auto max-w-7xl'>
 
+<Products />
+</div>
       <Footer />
     </div>
   )

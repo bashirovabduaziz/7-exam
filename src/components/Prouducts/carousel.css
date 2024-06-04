@@ -1,0 +1,17 @@
+.custom-carousel .react-multi-carousel-item {
+    transition: transform 0.5s ease-in-out;
+}
+
+.custom-carousel .react-multi-carousel-item--active {
+    transform: scale(1.2);
+}
+
+.custom-carousel .react-multi-carousel-item--next,
+.custom-carousel .react-multi-carousel-item--previous {
+    transform: scale(1.1);
+}
+
+.custom-carousel .react-multi-carousel-item--before,
+.custom-carousel .react-multi-carousel-item--after {
+    transform: scale(1);
+}

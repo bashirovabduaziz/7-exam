@@ -46,7 +46,7 @@ const Cart = () => {
       }
       
       </div>
-      <div className='mx-auto w-[1200px]'>
+      <div className='mx-auto max-w-7xl'>
       <Products />
       </div>
        <Footer />

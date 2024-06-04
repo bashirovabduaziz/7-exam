@@ -10,6 +10,8 @@ export const cartSlice = createSlice({
             let index = state.value.findIndex(el => el.id === action.payload.id)
             if(index < 0){
                 state.value = [...state.value, {...action.payload, quantity: 1}]
+            }else{
+                state.value = state.value.filter((product) => product.id !== action.payload.id)
             }
             localStorage.setItem("carts",JSON.stringify(state.value))
         },
