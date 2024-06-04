@@ -5,14 +5,14 @@ import { Button } from '@mui/material';
 
 const Carousel = ({ data }) => {
   const [slide, setSlide] = useState(0);
-  const autoPlayInterval = 2000;
+  const autoPlayInterval = 3000;
 
   const nextSlide = () => {
-    setSlide(slide === data.length - 1 ? 0 : slide + 1);
+    setSlide((slide + 1) % data.length);
   };
 
   const prevSlide = () => {
-    setSlide(slide === 0 ? data.length - 1 : slide - 1);
+    setSlide((slide - 1 + data.length) % data.length);
   };
 
   useEffect(() => {
@@ -20,9 +20,8 @@ const Carousel = ({ data }) => {
       nextSlide();
     }, autoPlayInterval);
 
-    return () => clearInterval(interval);
+    return () => clearInterval(interval); 
   }, [slide]); 
-
   return (
     <div className='carousel'>
       <div className='absolute mr-[600px]'>
@@ -31,17 +30,26 @@ const Carousel = ({ data }) => {
         <Button variant="contained" className='button' color="success">SHOP NOW</Button>
       </div>
       <BsArrowLeftCircleFill className="arrow arrow-left" onClick={prevSlide} />
-      {data.map((item, idx) => {
-        return <img src={item.src} alt={item.alt} key={idx} className={slide === idx ? "slide" : "slide slide-hidden"} />
-      })}
+      {data.map((item, idx) => (
+        <img
+          src={item.src}
+          alt={item.alt}
+          key={idx}
+          className={slide === idx ? "slide" : "slide slide-hidden"}
+        />
+      ))}
       <BsArrowRightCircleFill onClick={nextSlide} className="arrow arrow-right" />
       <span className='indicators'>
-        {data.map((_, idx) => {
-          return <button key={idx} className={slide === idx ? "indicator" : "indicator indicator-inactive"} onClick={() => setSlide(idx)}></button>
-        })}
+        {data.map((_, idx) => (
+          <button
+            key={idx}
+            className={slide === idx ? "indicator" : "indicator indicator-inactive"}
+            onClick={() => setSlide(idx)}
+          ></button>
+        ))}
       </span>
     </div>
-  )
-}
+  );
+};
 
 export default Carousel;

@@ -95,24 +95,13 @@ a.active{
   top: 250px;
   left: 45%;
 }
-.carousel-container {
-    padding: 20px; /* Adjust padding as necessary */
-}
 
-.carousel-item-padding-20-px {
-    padding: 0 10px; /* Half of the desired gap to both sides */
-}
+
 .product__card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left: 400px;
- /* Half of the desired gap to both sides */
+    margin-left: 430px;
 }
-.product__cars {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
- /* Half of the desired gap to both sides */
-}
+
 
