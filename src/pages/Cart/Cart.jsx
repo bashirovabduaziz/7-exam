@@ -6,13 +6,14 @@ import { FaTrashAlt } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import Products from '../../components/Prouducts/Products'
 import Footer from '../../components/Footer/Footer'
+import Chekout from '../../components/checkout/Chekout'
 
 const Cart = () => {
   const carts = useSelector(state => state.cart.value)
   const dispatch = useDispatch()
   
 
-  let items = carts?.map((el) =>  <div key={el.id} className='w-[700px] flex items-center justify-around bg-clr mt-[30px] rounded-[5px]'>
+  let items = carts?.map((el) =>  <div key={el.id} className='w-[700px] flex items-center justify-around bg-clr mt-[20px] rounded-[5px]'>
       <img src={el.images[0]} alt=""   className='w-[80px] h-[80px]'/>
       <Link to={`/single-product/${el.id}`}>
       <p className='titles font-[500] text-[#3D3D3D]'>{el.title}</p>
@@ -35,7 +36,29 @@ const Cart = () => {
       <div className='mx-auto flex items-center justify-between w-[1200px]'>
       {
         carts.length ? 
-        <div className=' '>{items}</div>
+        <div className=''>
+          <div>
+          <div className='flex items-center mt-[20px] justify-between w-[700px]'>
+            <p className='text-[#3D3D3D] font-[500]'>Products</p>
+            <div className=' mr-[42px] w-[330px] flex items-center justify-around'>
+
+              <p className='text-[#3D3D3D] font-[500]'>Price</p>
+              <p className='text-[#3D3D3D] font-[500]'>Quantity</p>
+              <p className='text-[#3D3D3D] font-[500]'>Total</p>
+            </div>
+            
+          </div>
+          <hr className='mt-[10px] w-[700px]' />  
+          </div>
+          
+          <div className='flex w-[1200px] justify-between'>
+            <div>
+          {items}
+          </div>
+          <Chekout />
+          </div>
+          
+          </div>
         
 
         :

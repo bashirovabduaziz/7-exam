@@ -49,7 +49,7 @@ const Products = () => {
     };
 
     const products = data?.map((el) =>
-        <div key={el.id} className='mt-[40px] ml-[30px]  product__cart h-[300px] '>
+        <div key={el.id} className='mt-[40px] ml-[30px]  product__cart h-[300px]  '>
             <img src={el.images[0]} className='w-[180px] h-[200px] bg-clr  rounded-[5px]' alt={el.title} />
             <div className="product__hiddens">
                 <button className='product__like' onClick={() => dispatch(toggleToWishes(el))}>

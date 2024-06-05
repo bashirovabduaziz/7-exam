@@ -55,9 +55,12 @@ const Wishlist = () => {
     <div className=''>
       <Header />
       <div className='mx-auto flex items-center justify-between w-[1200px]'>
+        
       {
         wishes.length ? 
-        <div className=' mr-[30px] flex items-center flex-wrap justify-between'>{wish}</div>
+        <div className=' mr-[30px] flex items-center flex-wrap justify-between'>
+          {wish}
+          </div>
         
 
         :
