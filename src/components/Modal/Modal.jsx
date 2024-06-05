@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { IoMdClose } from "react-icons/io";
+import { Link } from 'react-router-dom';
+import { clearCart } from '../../context/cartSlice';
 
 function Modal() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const carts = useSelector(state => state.cart.value)
+  const dispatch = useDispatch();
+
 
   let items = carts?.map((el) => <div className='w-[350px] flex items-center justify-around bg-clr mt-[10px] '>
      <img src={el.images[0]} alt=""   className='w-[50px] h-[50px]'/>
@@ -46,12 +50,14 @@ function Modal() {
           </div>
           <hr className='w-[350px]' />
                  {items}
-            <button
-              onClick={closeModal}
+           <Link to={'/home'}>
+           <button
+             onClick={() => dispatch(clearCart())} 
               className=" px-4 py-2 w-[350px] mt-[20px] bg-[#46A358] text-white rounded "
             >
              Track your order
             </button>
+           </Link>
           </div>
         </div>
       )}
