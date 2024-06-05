@@ -61,7 +61,7 @@ const Chekout = () => {
             </div>
             <div className='flex items-center justify-between mt-[10px]'>
                 <p className='font-[600] text-[#3D3D3D]'>Total</p>
-                <p className='font-[600] text-[#46A358]'>${(discountedTotal + 16).toFixed(2)}</p> {/* Added shipping to total */}
+                <p className='font-[600] text-[#46A358]'>${(discountedTotal + 16).toFixed(2)}</p> 
             </div>
             <Link to={'/checkout'} className=''>
                 <Button variant="contained" className='top-[10px] w-[300px]' color="success">
