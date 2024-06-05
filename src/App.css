@@ -34,6 +34,13 @@ a.active{
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+.titless{
+    width: 100px;
+    
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 
 .bg-clr{
   background-color: rgba(251, 251, 251, 1);
@@ -104,4 +111,7 @@ a.active{
     margin-left: 430px;
 }
 
+.modal{
+    z-index: 100;
+}
 

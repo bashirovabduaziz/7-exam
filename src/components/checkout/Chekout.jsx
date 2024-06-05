@@ -26,8 +26,8 @@ const Chekout = () => {
         <p className='font-[600] text-[#3D3D3D]'>Total</p>
         <p className='font-[600] text-[#46A358]'>$2,699.00</p>
       </div>
-     <Link to={'/checkout'} className='border-none'>
-     <Button variant="contained"  className='border-none top-[10px] w-[220px]' color="success">
+     <Link to={'/checkout'} className=''>
+     <Button variant="contained"  className=' top-[10px] w-[220px]' color="success">
      Proceed To Checkout
 </Button>
      </Link>
