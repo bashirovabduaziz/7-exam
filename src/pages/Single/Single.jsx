@@ -21,14 +21,26 @@ const Single = () => {
   const wishes = useSelector(state => state.wishlist.value)
   const carts = useSelector(state => state.cart.value)
 
-  useEffect(()=> {
-    axios.get(`https://dummyjson.com/products/${id}`)
-    .then(res => {setProduct(res.data);setLeading(false)})
-    .catch(res => console.log(res))
-},[])
-useEffect(() => {
-  window.scrollTo(0, 0)
-}, [])
+ 
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const res = await axios.get(`https://dummyjson.com/products/${id}`);
+        setProduct(res.data);
+        setLeading(false);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    setLeading(true); 
+    fetchProduct();
+  }, [id]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
+
   return (
     <div>
       <Header />
