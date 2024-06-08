@@ -5,13 +5,15 @@ import Footer from '../../components/Footer/Footer'
 import FormHook from '../../components/Forms/FormHook'
 import RightCard from '../../components/Forms/RightCard'
 import Modal from '../../components/Modal/Modal'
+import { carts } from '../../static/data';
+
 
 const Checkout = () => {
-  const carts = useSelector(state => state.cart.value)
+  const cartItems = useSelector(state => state.cart.value)
 
-  let items = carts?.map((el) => <div className='w-[400px] flex items-center justify-around bg-clr mt-[5px] '>
-     <img src={el.images[0]} alt=""   className='w-[50px] h-[50px]'/>
-     <p className='titles font-[500] text-[#3D3D3D]'>{el.title}</p>
+  let items = cartItems?.map((el , id) => <div  className='w-[400px] flex items-center justify-around bg-clr mt-[5px] '>
+     <img src={el.image_url} alt=""   className='w-[50px] h-[50px]'/>
+     <p className='titles font-[500] text-[#3D3D3D]'>{el.common_name}</p>
      <p className='font-[500] '>(x{el.quantity})</p>
      <h3 className='w-[50px] price'>${el.price * el.quantity}</h3>
   </div>)

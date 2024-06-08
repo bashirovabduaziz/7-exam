@@ -10,19 +10,10 @@ import Image from '../../assets/mainimg/02.svg'
 import Posts from '../../components/Posts/Posts';
 
 const YourComponent = () => {
-  const [data , setData] = useState([])
-  const [loading , setLoading] = useState(true)
-   
+ 
+ 
 
-  useEffect(()=>{
-    axios
-        .get("products")
-        .then(res => {setData(res.data.products);setLoading(false)})
-        .catch(res => console.log(res))
-}, [])
-useEffect(() => {
-  window.scrollTo(0, 0)
-}, [])
+ 
 
     return (
         <div>
@@ -30,7 +21,7 @@ useEffect(() => {
     <Carousel data={slides} />
     <div className='flex items-center justify-between mx-auto w-[1200px]  '>
               <Categories />
-           <Carts data={data}  loading={loading} />
+           <Carts />
            </div>
            <div className="w-[1200px] mx-auto mt-[50px]">
             <img src={Image} alt="" />

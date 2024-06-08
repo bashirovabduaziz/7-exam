@@ -1,19 +1,21 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
+const SearchResult = ({ data }) => {
+  const searchItems = data.map(el => (
+    <div key={el.id}>
+      <Link to={`/single-product/${el.id}`} className='flex items-center h-[40px] hover:bg-gray-200'>
+        <img src={el.image_url} width={30} height={30} alt="" />
+        <span className=''>{el.common_name}</span>
+      </Link>
+    </div>
+  ));
 
-const SearchResult = ({data}) => {
-       let searchItems = data?.map(el =>  <div key={el.id} >
-        <Link to={`/single-product/${el.id}`} className='flex items-center w-[200px] h-[40px]'>
-            <img src={el.thumbnail} width={30} height={30} alt="" />
-        <span className='search-title'>{el.title}</span>
-        </Link>
-       </div>)
-    return (
+  return (
     <div className='navbar-search-result'>
-          {searchItems}
-        </div>
-  )
-}
+      {searchItems}
+    </div>
+  );
+};
 
-export default SearchResult
+export default SearchResult;

@@ -1,33 +1,40 @@
-import React, { useEffect, useState }  from 'react'
-import { IoSearch } from 'react-icons/io5'
+import React, { useState } from 'react';
+import { IoSearch } from 'react-icons/io5';
 import SearchResult from './SearchResult';
-import axios from '../../api'
+import { carts } from '../../static/data';
 
 const SearchBar = () => {
-const [value,setValue] = useState('')
-const [data,setData] = useState(null)
+  const [value, setValue] = useState('');
+  const [filteredData, setFilteredData] = useState([]);
 
-console.log(value);
-useEffect(()=>{
-    axios
-        .get(`products/search?q=${value}`)
-        .then(res => setData(res.data.products))
-        .catch(err=> console.log(err))
-}, [value])
+  const handleSearch = (e) => {
+    const searchValue = e.target.value;
+    setValue(searchValue);
+
+    if (searchValue) {
+      const filtered = carts.filter((item) =>
+        item.common_name.toLowerCase().includes(searchValue.toLowerCase())
+      );
+      setFilteredData(filtered);
+    } else {
+      setFilteredData([]);
+    }
+  };
 
   return (
     <div>
-    <div className='input-wrapper'>
+      <div className='input-wrapper'>
         <IoSearch id='search-icon' />
-        <input type="text" placeholder='Find your plants' value={value} onChange={e => setValue(e.target.value)} />
-        {
-            value?
-           <SearchResult data={data} /> :
-         <></>
-        }
+        <input
+          type="text"
+          placeholder='Find your plants'
+          value={value}
+          onChange={handleSearch}
+        />
+        {value && <SearchResult data={filteredData} />}
+      </div>
     </div>
-    </div>
-  )
-}
+  );
+};
 
-export default SearchBar
+export default SearchBar;

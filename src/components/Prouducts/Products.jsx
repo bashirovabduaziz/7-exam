@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from '../../api';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleToWishes } from "../../context/wishlistSlice";
 import { addToCart } from '../../context/cartSlice';
@@ -9,20 +8,16 @@ import { Link } from 'react-router-dom';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { CircularProgress } from '@mui/material';
-import './carousel.css'; // Import custom CSS
-
+import './carousel.css'; 
+import { carts } from '../../static/data';
 const Products = () => {
-    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
     const dispatch = useDispatch();
     const wishes = useSelector(state => state.wishlist.value);
-    const carts = useSelector(state => state.cart.value);
-    const [loading , setLoading] = useState(true);
+    const cartsInStore = useSelector(state => state.cart.value);
 
     useEffect(() => {
-        axios
-            .get("products")
-            .then(res => { setData(res.data.products); setLoading(false); })
-            .catch(res => console.log(res));
+        setLoading(false); 
     }, []);
 
     const responsive = {
@@ -48,20 +43,20 @@ const Products = () => {
         }
     };
 
-    const products = data?.map((el) =>
-        <div key={el.id} className='mt-[40px] ml-[30px]  product__cart h-[300px]  '>
-            <img src={el.images[0]} className='w-[180px] h-[200px] bg-clr  rounded-[5px]' alt={el.title} />
+    const products = carts.map((el) => (
+        <div key={el.id} className='mt-[40px] ml-[30px] product__cart h-[300px]'>
+            <img src={el.image_url} className='w-[180px] h-[200px] bg-clr rounded-[5px]' alt={el.common_name} />
             <div className="product__hiddens">
                 <button className='product__like' onClick={() => dispatch(toggleToWishes(el))}>
                     {
                         wishes.some(w => w.id === el.id) ?
-                            <FaRegHeart className='w-[30px] h-[20px] icons' /> :
+                            <FaHeart className='w-[30px] h-[20px] icons' /> :
                             <FaRegHeart className='w-[30px] h-[20px]' />
                     }
                 </button>
                 <button className='product__like' onClick={() => dispatch(addToCart(el))} >
                     {
-                        carts.some(w => w.id === el.id) ?
+                        cartsInStore.some(w => w.id === el.id) ?
                             <IoCartOutline className='icons w-[30px] h-[20px]' /> :
                             <IoCartOutline className='w-[30px] h-[20px]' />
                     }
@@ -72,10 +67,10 @@ const Products = () => {
                     </button>
                 </Link>
             </div>
-            <h1 className='title font-[500] text-gray-600 mt-[20px]'>{el.title}</h1>
+            <h1 className='title font-[500] text-gray-600 mt-[20px]'>{el.common_name}</h1>
             <p className='text-green-600 font-[600]'>${el.price}</p>
         </div>
-    );
+    ));
 
     return (
         <div className="carousel-container mt-[100px]">
@@ -84,14 +79,14 @@ const Products = () => {
             ) : (
                 <div>
                     <h1 className='font-[600] text-[#46A358]'>Related Products</h1>
-                    <hr className='mt-[10px]'/>
+                    <hr className='mt-[10px]' />
                     <Carousel 
                         className='mt-[20px] ml-[10px] custom-carousel'
-                        responsive={responsive} 
-                        itemClass="carousel-item-padding-20-px" 
-                        autoPlay={true} 
-                        autoPlaySpeed={1500} 
-                        infinite={true} 
+                        responsive={responsive}
+                        itemClass="carousel-item-padding-20-px"
+                        autoPlay={true}
+                        autoPlaySpeed={1500}
+                        infinite={true}
                         transitionDuration={500}
                     >
                         {products}
