@@ -1,5 +1,3 @@
-import React, { useState, useEffect } from 'react';
-import axios from '../../api'
 import Carts from '../../components/Carts/Carts';
 import Header from '../../components/Header/Header';
 import Carousel from '../../components/Carousel/Carousel';
@@ -11,10 +9,6 @@ import Posts from '../../components/Posts/Posts';
 
 const YourComponent = () => {
  
- 
-
- 
-
     return (
         <div>
     <Header />

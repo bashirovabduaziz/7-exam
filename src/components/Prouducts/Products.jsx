@@ -10,6 +10,7 @@ import 'react-multi-carousel/lib/styles.css';
 import { CircularProgress } from '@mui/material';
 import './carousel.css'; 
 import { carts } from '../../static/data';
+
 const Products = () => {
     const [loading, setLoading] = useState(true);
     const dispatch = useDispatch();
@@ -17,7 +18,12 @@ const Products = () => {
     const cartsInStore = useSelector(state => state.cart.value);
 
     useEffect(() => {
-        setLoading(false); 
+       
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 2000);
+
+        return () => clearTimeout(timer);
     }, []);
 
     const responsive = {

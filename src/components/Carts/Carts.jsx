@@ -7,8 +7,7 @@ import { IoCartOutline, IoSearchOutline } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleToWishes } from "../../context/wishlistSlice";
 import { addToCart } from '../../context/cartSlice';
-import { carts } from '../../static/data'; // Importing the carts array
-
+import { carts } from '../../static/data'; 
 const Carts = () => {
   const dispatch = useDispatch();
   const wishes = useSelector(state => state.wishlist.value);
@@ -23,15 +22,19 @@ const Carts = () => {
 
   useEffect(() => {
     const fetchData = () => {
-      setLoading(true);
       setData(carts);
       const categories = [...new Set(carts.map(item => item.category))];
       setCategories(categories);
-      setLoading(false);
     };
 
     fetchData();
-    window.scrollTo(0, 0);
+
+  
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const handlePageClick = (event) => {
@@ -40,7 +43,7 @@ const Carts = () => {
 
   const handleCategoryChange = (e) => {
     setSelectedCategory(e.target.value);
-    setCurrentPage(0); // Reset to the first page when category changes
+    setCurrentPage(0); 
   };
 
   const filteredData = selectedCategory === 'all' ? data : data.filter(item => item.category === selectedCategory);
