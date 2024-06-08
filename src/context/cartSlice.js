@@ -17,24 +17,16 @@ export const cartSlice = createSlice({
         },
         incCart(state, action) {
             let index = state.value.findIndex(el => el.id === action.payload.id);
-            state.value = state.value.map((product, inx) => {
-                if (index === inx) {
-                    return { ...product, quantity: product.quantity + 1 };
-                } else {
-                    return product;
-                }
-            });
+            if (index >= 0) {
+                state.value[index].quantity += 1;
+            }
             localStorage.setItem("carts", JSON.stringify(state.value));
         },
         decCart(state, action) {
             let index = state.value.findIndex(el => el.id === action.payload.id);
-            state.value = state.value.map((product, inx) => {
-                if (index === inx) {
-                    return { ...product, quantity: product.quantity - 1 };
-                } else {
-                    return product;
-                }
-            });
+            if (index >= 0 && state.value[index].quantity > 1) {
+                state.value[index].quantity -= 1;
+            }
             localStorage.setItem("carts", JSON.stringify(state.value));
         },
         removeFromCart(state, action) {
