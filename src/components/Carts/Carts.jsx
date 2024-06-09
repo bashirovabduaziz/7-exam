@@ -89,8 +89,11 @@ const Carts = () => {
             <div className='flex flex-wrap ml-[20px] w-[700px]'>
               {currentItems.map((plant) => (
                 <div key={plant.id} className='mt-[40px] ml-[30px] product__cart'>
-                  <img src={plant.image_url} className='w-[180px] h-[200px] bg-clr rounded-[5px]' alt={plant.common_name} />
+                  <div className=''>
+                  <img src={plant.image_url} className='w-[180px] h-[200px] bg-clr img-carts rounded-[5px] ' alt={plant.common_name} />
+                  </div>
                   <div className="product__hiddens">
+
                     <button className='product__like' onClick={() => dispatch(toggleToWishes(plant))}>
                       {wishes.some(w => w.id === plant.id) ? (
                         <FaHeart className='w-[30px] h-[20px] icons' />

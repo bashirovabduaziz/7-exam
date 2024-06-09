@@ -114,5 +114,22 @@ a.active{
 .modal{
     z-index: 100;
 }
-
-
+.product__cart {
+    position: relative;
+    transition: transform 0.3s;
+  }
+  
+  .product__cart img {
+    cursor: pointer;
+  }
+  
+  .product__cart img.transform.scale-150 {
+    z-index: 10;
+    transform: scale(1.5);
+  }
+  
+  .product__cart img:not(.transform.scale-150) {
+    transition: transform 0.3s;
+  }
+  
+  
