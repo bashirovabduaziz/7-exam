@@ -18,12 +18,24 @@ function Login() {
   const navigate = useNavigate();
 
   const handleSignUp = () => {
+    const { name, email, password } = signUpData;
+    if (!name || !email || !password) {
+      toast.error('Please fill in all fields');
+      return;
+    }
+
     localStorage.setItem('user', JSON.stringify(signUpData));
     toggle(true);
     toast.success('Account created successfully!');
   };
 
   const handleSignIn = () => {
+    const { email, password } = signInData;
+    if (!email || !password) {
+      toast.error('Please fill in all fields');
+      return;
+    }
+
     const storedUser = JSON.parse(localStorage.getItem('user'));
     if (
       storedUser &&

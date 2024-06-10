@@ -1,18 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Header.scss';
 import logo from '../../assets/headerimg/Logo.svg';
 import { Link, NavLink } from 'react-router-dom';
 import { IoCartOutline } from 'react-icons/io5';
-import { IoMdHeartEmpty } from 'react-icons/io';
+import { IoMdHeartEmpty, IoMdPerson } from 'react-icons/io';
 import { Button } from '@mui/material';
 import { ImExit } from 'react-icons/im';
 import SearchBar from './SearchBar';
 import { useSelector } from 'react-redux';
+import { FaRegUserCircle } from 'react-icons/fa';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [user, setUser] = useState(null);
   const carts = useSelector(state => state.cart.value);
   const wishes = useSelector(state => state.wishlist.value);
+
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    if (storedUser) {
+      setUser(storedUser);
+    }
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -82,16 +91,26 @@ const Header = () => {
             <IoCartOutline className="w-[40px] h-[30px]" />
             <sup className="w-[15px] h-[15px] text-[10px] mr rounded-full flex items-center justify-center right-[15px] mt-[3px] bg-[#46A358] transition text-white">
               {carts.length}
-            </sup>{' '}
+            </sup>
           </Link>
-          <Link to={'/'}>
-            <Button variant="contained" className="bg-green-700" color="success">
-              <ImExit className="w-6 h-6" /> Login
-            </Button>
-          </Link>
+
+          {user ? (
+          <Link to={'/'} className='flex items-center gap-[10px]'>
+               <Button variant="contained" className="bg-green-700 gap-[5px]" color="success">
+               <FaRegUserCircle className="w-[20px] h-[20px]" />
+               <span>{user.name}</span></Button>  
+             
+              </Link>
+          ) : (
+            <Link to={'/'}>
+              <Button variant="contained" className="bg-green-700" color="success">
+                <ImExit className="w-6 h-6" /> Login
+              </Button>
+            </Link>
+          )}
         </div>
       </div>
-      <hr  />
+      <hr />
     </div>
   );
 };
