@@ -13,7 +13,7 @@ function Login() {
       window.location.href = '/home';
       toast.success("Hush kelibsiz")
     } else {
-      toast.error("Hatooooo!!!");
+      toast.error("Passwordni Hato kiritingiz yana bir bor urunib koring");
 
     }
   };

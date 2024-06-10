@@ -124,7 +124,7 @@ const Single = () => {
                       </div>
                     )}
                     <Link to={'/cart'} className='mt-[10px]'>
-                      <Button variant="contained" color='success'>BUY NOW</Button>
+                      <Button variant="contained" color='success' >BUY NOW</Button>
                     </Link>
                     {
                       cartsInStore.some(w => w.id === product.id) ? (
