@@ -16,7 +16,7 @@ const Chekout = () => {
     const discountedTotal = totalPrice * (1 - discount);
 
     const handleCouponApply = () => {
-        if (couponCode === 'Farina') {
+        if (couponCode === 'Abduaziz') {
             setDiscount(0.5);
         } else {
             setDiscount(0);
